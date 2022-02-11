@@ -24,14 +24,26 @@ if funct == 'latesttv':
     destination = shutil.copytree(src, dest, dirs_exist_ok=True)
     print('cleaning up temp space')
     cleanup = shutil.rmtree('tvshows/')
+#elif funct == 'alltv':
+#    urltype = 'tvshows'
+#    ipttvurl = 'https://tvnow.best/api/list/' + user + '/' + pw + '/m3u8/'+ urltype +'/'
+#    for i in range(1,21):
+#        url = ipttvurl + str(i)
+#        print(wget.download(url, ('m3u/apollotvshows-'+str(i)+'.m3u')))
+#        apollolist = streamClasses.rawStreamList('m3u/apollotvshows-'+str(i)+'.m3u')
+#        os.remove('m3u/apollotvshows-'+str(i)+'.m3u')
+#    src = '/m3u2strm/tvshows'
+#    dest = path
+#    print('copying folder structure to ',path)
+#    destination = shutil.copytree(src, dest, dirs_exist_ok=True)
+#    print('cleaning up temp space')
+#    cleanup = shutil.rmtree('tvshows/')
 elif funct == 'alltv':
     urltype = 'tvshows'
-    ipttvurl = 'https://tvnow.best/api/list/' + user + '/' + pw + '/m3u8/'+ urltype +'/'
-    for i in range(1,21):
-        url = ipttvurl + str(i)
-        print(wget.download(url, ('m3u/apollotvshows-'+str(i)+'.m3u')))
-        apollolist = streamClasses.rawStreamList('m3u/apollotvshows-'+str(i)+'.m3u')
-        os.remove('m3u/apollotvshows-'+str(i)+'.m3u')
+    ipttvurl = 'https://tvnow.best/api/list/' + user + '/' + pw + '/m3u8/'+ urltype
+    print(wget.download(ipttvurl, ('m3u/apollotvshows.m3u')))
+    apollolist = streamClasses.rawStreamList('m3u/apollotvshows.m3u')
+    os.remove('m3u/apollotvshows.m3u')
     src = '/m3u2strm/tvshows'
     dest = path
     print('copying folder structure to ',path)
@@ -40,7 +52,7 @@ elif funct == 'alltv':
     cleanup = shutil.rmtree('tvshows/')
 elif funct == 'movies':
     urltype = 'movies'
-    ipttvurl = 'https://tv4.live/api/list/' + user + '/' + pw + '/m3u8/'+ urltype
+    ipttvurl = 'https://tvnow.best/api/list/' + user + '/' + pw + '/m3u8/'+ urltype
     print(wget.download(ipttvurl, ('m3u/iptvmovies.m3u')))
     apollolist = streamClasses.rawStreamList('m3u/iptvmovies.m3u')
     os.remove('m3u/iptvmovies.m3u')
