@@ -24,20 +24,6 @@ if funct == 'latesttv':
     destination = shutil.copytree(src, dest, dirs_exist_ok=True)
     print('cleaning up temp space')
     cleanup = shutil.rmtree('tvshows/')
-#elif funct == 'alltv':
-#    urltype = 'tvshows'
-#    ipttvurl = 'https://tvnow.best/api/list/' + user + '/' + pw + '/m3u8/'+ urltype +'/'
-#    for i in range(1,21):
-#        url = ipttvurl + str(i)
-#        print(wget.download(url, ('m3u/apollotvshows-'+str(i)+'.m3u')))
-#        apollolist = streamClasses.rawStreamList('m3u/apollotvshows-'+str(i)+'.m3u')
-#        os.remove('m3u/apollotvshows-'+str(i)+'.m3u')
-#    src = '/m3u2strm/tvshows'
-#    dest = path
-#    print('copying folder structure to ',path)
-#    destination = shutil.copytree(src, dest, dirs_exist_ok=True)
-#    print('cleaning up temp space')
-#    cleanup = shutil.rmtree('tvshows/')
 elif funct == 'alltv':
     urltype = 'tvshows'
     ipttvurl = 'https://tvnow.best/api/list/' + user + '/' + pw + '/m3u8/'+ urltype
