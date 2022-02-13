@@ -17,6 +17,7 @@ git clone https://github.com/hooray4me/m3u2strm.git
 crontab -e
 
 0 10 * * * cd /m3u2strm && $(which python3) m3u2strm.py <apollo user> <apollo password> alltv "/path/to/tvshows/" >> ~/cron.log 2>&1
+
 0 20 * * * cd /m3u2strm && $(which python3) m3u2strm.py <apollo user> <apollo password> movies "/path/to/movies/" >> ~/cron.log 2>&1
   
 You can run this manually:
