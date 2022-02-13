@@ -13,13 +13,18 @@ Installation and setup:
 git clone https://github.com/hooray4me/m3u2strm.git
 2. create a folder for tvshows and movies... make sure the emby user account has access to these folders.
 3. create cron jobs to run these scripts once a day. In this example, we run tvshows at 12:10 and movies at 12:20... replace user/password and paths accordingly.
+
 crontab -e
+
 0 10 * * * cd /m3u2strm && $(which python3) m3u2strm.py <apollo user> <apollo password> alltv "/path/to/tvshows/" >> ~/cron.log 2>&1
 0 20 * * * cd /m3u2strm && $(which python3) m3u2strm.py <apollo user> <apollo password> movies "/path/to/movies/" >> ~/cron.log 2>&1
   
 You can run this manually:
-cd /m3u2strm
-$(which python3) m3u2strm.py <apollo user> <apollo password> alltv "/path/to/tvshows/"
-$(which python3) m3u2strm.py <apollo user> <apollo password> movies "/path/to/movies/"
   
+cd /m3u2strm
+
+$(which python3) m3u2strm.py <apollo user> <apollo password> alltv "/path/to/tvshows/"
+
+$(which python3) m3u2strm.py <apollo user> <apollo password> movies "/path/to/movies/"
+
 In emby, create a tvshows and movies library that points to these paths.
