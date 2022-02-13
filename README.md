@@ -16,16 +16,16 @@ git clone https://github.com/hooray4me/m3u2strm.git
 
 crontab -e
 
-0 10 * * * cd /m3u2strm && $(which python3) m3u2strm.py <apollo user> <apollo password> alltv "/path/to/tvshows/" >> ~/cron.log 2>&1
+0 10 * * * cd /m3u2strm && $(which python3) m3u2strm.py (apollo user) (apollo password) alltv "/path/to/tvshows/" >> ~/cron.log 2>&1
 
-0 20 * * * cd /m3u2strm && $(which python3) m3u2strm.py <apollo user> <apollo password> movies "/path/to/movies/" >> ~/cron.log 2>&1
+0 20 * * * cd /m3u2strm && $(which python3) m3u2strm.py (apollo user) (apollo password) movies "/path/to/movies/" >> ~/cron.log 2>&1
   
 You can run this manually:
   
 cd /m3u2strm
 
-$(which python3) m3u2strm.py <apollo user> <apollo password> alltv "/path/to/tvshows/"
+$(which python3) m3u2strm.py (apollo user) (apollo password) alltv "/path/to/tvshows/"
 
-$(which python3) m3u2strm.py <apollo user> <apollo password> movies "/path/to/movies/"
+$(which python3) m3u2strm.py (apollo user) (apollo password) movies "/path/to/movies/"
 
 In emby, create a tvshows and movies library that points to these paths.
