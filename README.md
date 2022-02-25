@@ -15,11 +15,11 @@ Installation and setup:
 3. Inside the streaming folder create 2 sub folders: one called `tvshows` and one called `movies`
 4. Set your emby user as the owner of embyroot and sub-folders with command `sudo chown -r emby:emby embyroot`
 5. Change to the emby user (On Ubuntu you can run: `sudo su -s /bin/bash emby') 
-6. Inside the `embyroot` folder clone this repo (requires git to be installed) with the command: git clone https://github.com/EagleMitchell/m3u2strm.git
+6. Inside the `embyroot` folder clone this repo (requires git to be installed) with the command: `git clone https://github.com/EagleMitchell/m3u2strm.git`
 7. Create cron jobs to run these scripts once a day. In this example, we run tvshows at 12:10 and movies at 12:20... replace user/password and paths accordingly.
 
 Run these as the emby user, not as root or a sudoer otherwise the permissions will be incorrect for emby to access the media created:
-crontab -e
+`crontab -e`
 
 0 10 * * * cd /embyroot/m3u2strm && $(which python3) m3u2strm.py (apollo user) (apollo password) alltv "/embyroot/streaming/tvshows/" >> ~/cron.log 2>&1
 
@@ -28,8 +28,8 @@ crontab -e
 
 To manually run an content scan:
   
-cd /embyroot/m3u2strm
+`cd /embyroot/m3u2strm`
 
-$(which python3) m3u2strm.py (apollo user) (apollo password) alltv "/embyroot/streaming/tvshows/"
+`$(which python3) m3u2strm.py (apollo user) (apollo password) alltv "/embyroot/streaming/tvshows/"`
 
-$(which python3) m3u2strm.py (apollo user) (apollo password) movies "/embyroot/streaming/movies/"
+`$(which python3) m3u2strm.py (apollo user) (apollo password) movies "/embyroot/streaming/movies/"`
