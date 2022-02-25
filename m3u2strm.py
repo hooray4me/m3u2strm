@@ -12,7 +12,7 @@ funct = sys.argv[3]
 path = sys.argv[4]
 urltype = ''
 print('...Starting Download...')
-elif funct == 'alltv':
+if funct == 'alltv':
     urltype = 'tvshows'
     ipttvurl = 'https://tvnow.best/api/list/' + user + '/' + pw + '/m3u8/'+ urltype
     print(wget.download(ipttvurl, ('m3u/apollotvshows.m3u')))
