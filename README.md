@@ -30,6 +30,6 @@ To manually run an content scan:
   
 `cd /embyroot/m3u2strm`
 
-`$(which python3) m3u2strm.py (apollo user) (apollo password) alltv "/embyroot/streaming/tvshows/"`
+`$(which python3) m3u2strm.py <apollo user> <apollo password> alltv "/embyroot/streaming/tvshows/"`
 
-`$(which python3) m3u2strm.py (apollo user) (apollo password) movies "/embyroot/streaming/movies/"`
+`$(which python3) m3u2strm.py <apollo user> <apollo password> movies "/embyroot/streaming/movies/"`
