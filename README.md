@@ -15,7 +15,7 @@ Installation and setup:
 3. Inside the streaming folder create 2 sub folders: one called `tvshows` and one called `movies`
 4. Set your emby user as the owner of embyroot and sub-folders with command `sudo chown -r emby:emby embyroot`
 5. Change to the emby user (On Ubuntu you can run: `sudo su -s /bin/bash emby`) 
-6. Inside the `embyroot` folder clone this repo (requires git to be installed) with the command: `git clone https://github.com/EagleMitchell/m3u2strm.git`
+6. Inside the `embyroot` folder clone this repo (requires git to be installed) with the command: `git clone https://github.com/hooray4me/m3u2strm.git`
 7. Create cron jobs to run these scripts once a day. In this example, we run tvshows at 12:10 and movies at 12:20... replace user/password and paths accordingly.
 
 Run these as the emby user, not as root or a sudoer otherwise the permissions will be incorrect for emby to access the media created:
