@@ -1,5 +1,5 @@
 ## m3u2strm
-m3u2strm is a set of python scripts that will consume the VOD (video on demand) tv shows and movies from an apollogroup.tv subscription and make it into libraries useable by emby. We use ubuntu focal and these instructions are for this OS.
+m3u2strm is a set of python scripts that will consume the VOD (video on demand) tv shows and movies from an apollogroup.tv subscription and make it into libraries useable by emby. We use **Ubuntu Focal** and these instructions are for this OS.
 
 **Pre-reqs:**
 1. Make sure you have python3 installed.
@@ -9,9 +9,11 @@ m3u2strm is a set of python scripts that will consume the VOD (video on demand) 
 
 **Installation and setup:**
 1. Clone this repo (requires git to be installed). We clone to the root.
+
 `git clone https://github.com/hooray4me/m3u2strm.git`
 2. create a folder for tvshows and movies... make sure the emby user account has access to these folders.
-3. create cron jobs to run these scripts once a day. In this example, we run tvshows at 12:10 and movies at 12:20... replace **user/password** and **paths** accordingly.
+3. create cron jobs to run these scripts once a day. 
+In this example, we run tvshows at 12:10 and movies at 12:20... replace **user/password** and **paths** accordingly.
 
 `crontab -e`
 ```
