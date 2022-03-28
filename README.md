@@ -12,7 +12,8 @@ m3u2strm is a set of python scripts that will consume the VOD (video on demand) 
 
 `git clone https://github.com/hooray4me/m3u2strm.git`
 2. create a folder for tvshows and movies... make sure the emby user account has access to these folders.
-3. create cron jobs to run these scripts once a day. 
+3. create cron jobs to run these scripts once a day.
+
 In this example, we run tvshows at 12:10 and movies at 12:20... replace **user/password** and **paths** accordingly.
 
 `crontab -e`
