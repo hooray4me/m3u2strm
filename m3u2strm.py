@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 import tools
-import logger
 import streamClasses
 import wget
 import sys
 import os
 import shutil
+import filecmp
 
 user = sys.argv[1]
 pw = sys.argv[2]
@@ -24,8 +24,9 @@ if funct == 'alltv':
         os.remove('m3u/apollotvshows-'+str(i)+'.m3u')
     src = directory+'/tvshows'
     dest = path
-    print('copying folder structure to ',path)
-    destination = shutil.copytree(src, dest, dirs_exist_ok=True)
+    print('comparing destination ',dest)
+    c = filecmp.dircmp(src, dest)
+    tools.compare_and_update(c)
     print('cleaning up temp space')
     cleanup = shutil.rmtree('tvshows/')
 elif funct == 'latesttv':
@@ -36,8 +37,9 @@ elif funct == 'latesttv':
     os.remove('m3u/apollotvshows.m3u')
     src = directory+'/tvshows'
     dest = path
-    print('copying folder structure to ',path)
-    destination = shutil.copytree(src, dest, dirs_exist_ok=True)
+    print('comparing destination ',dest)
+    c = filecmp.dircmp(src, dest)
+    tools.compare_and_update(c)
     print('cleaning up temp space')
     cleanup = shutil.rmtree('tvshows/')
 elif funct == 'movies':
@@ -48,8 +50,9 @@ elif funct == 'movies':
     os.remove('m3u/iptvmovies.m3u')
     src = directory+'/movies'
     dest = path
-    print('copying folder structure to ',path)
-    destination = shutil.copytree(src, dest, dirs_exist_ok=True)
+    print('comparing destination ',dest)
+    c = filecmp.dircmp(src, dest)
+    tools.compare_and_update(c)
     print('cleaning up temp space')
     cleanup = shutil.rmtree('movies/')
 print('done')
