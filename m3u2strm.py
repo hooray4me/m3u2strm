@@ -25,10 +25,8 @@ if funct == 'alltv':
         print(wget.download(url, ('m3u/apollotvshows-'+str(i)+'.m3u')))
         apollolist = streamClasses.rawStreamList('m3u/apollotvshows-'+str(i)+'.m3u')
         os.remove('m3u/apollotvshows-'+str(i)+'.m3u')
-    src = directory+'/tvshows'
-    dest = path
-    print('comparing destination ',dest)
-    c = filecmp.dircmp(src, dest)
+    print('comparing destination ',path)
+    c = filecmp.dircmp(directory+'/tvshows', path)
     tools.compare_and_update(c)
     print('cleaning up temp space')
     cleanup = shutil.rmtree('tvshows/')
@@ -37,10 +35,8 @@ elif funct == 'latesttv':
     print(wget.download(providerUrl+urltype, ('m3u/apollotvshows.m3u')))
     apollolist = streamClasses.rawStreamList('m3u/apollotvshows.m3u')
     os.remove('m3u/apollotvshows.m3u')
-    src = directory+'/tvshows'
-    dest = path
-    print('comparing destination ',dest)
-    c = filecmp.dircmp(src, dest)
+    print('comparing destination ',path)
+    c = filecmp.dircmp(directory+'/tvshows', path)
     tools.compare_and_update(c)
     print('cleaning up temp space')
     cleanup = shutil.rmtree('tvshows/')
@@ -49,10 +45,8 @@ elif funct == 'movies':
     print(wget.download(providerUrl+urltype, ('m3u/iptvmovies.m3u')))
     apollolist = streamClasses.rawStreamList('m3u/iptvmovies.m3u')
     os.remove('m3u/iptvmovies.m3u')
-    src = directory+'/movies'
-    dest = path
-    print('comparing destination ',dest)
-    c = filecmp.dircmp(src, dest)
+    print('comparing destination ',path)
+    c = filecmp.dircmp(directory+'/movies', path)
     tools.compare_and_update(c)
     print('cleaning up temp space')
     cleanup = shutil.rmtree('movies/')
