@@ -7,18 +7,21 @@ import os
 import shutil
 import filecmp
 
-user = sys.argv[1]
-pw = sys.argv[2]
-funct = sys.argv[3]
-path = sys.argv[4]
+provider = sys.argv[1]
+user = sys.argv[2]
+pw = sys.argv[3]
+funct = sys.argv[4]
+path = sys.argv[5]
 urltype = ''
+providerUrl = ''
 directory =  os.path.abspath(os.path.dirname(__file__))
+if provider == 'apollo':
+    providerUrl = 'https://tvnow.best/api/list/'+ user + '/' + pw + '/m3u8/'
 print('...Starting Download...')
 if funct == 'alltv':
     urltype = 'tvshows'
-    ipttvurl = 'https://tvnow.best/api/list/' + user + '/' + pw + '/m3u8/'+ urltype +'/'
     for i in range(1,21):
-        url = ipttvurl + str(i)
+        url = providerUrl + urltype +'/' + str(i)
         print(wget.download(url, ('m3u/apollotvshows-'+str(i)+'.m3u')))
         apollolist = streamClasses.rawStreamList('m3u/apollotvshows-'+str(i)+'.m3u')
         os.remove('m3u/apollotvshows-'+str(i)+'.m3u')
@@ -31,8 +34,7 @@ if funct == 'alltv':
     cleanup = shutil.rmtree('tvshows/')
 elif funct == 'latesttv':
     urltype = 'tvshows'
-    ipttvurl = 'https://tvnow.best/api/list/' + user + '/' + pw + '/m3u8/'+ urltype
-    print(wget.download(ipttvurl, ('m3u/apollotvshows.m3u')))
+    print(wget.download(providerUrl+urltype, ('m3u/apollotvshows.m3u')))
     apollolist = streamClasses.rawStreamList('m3u/apollotvshows.m3u')
     os.remove('m3u/apollotvshows.m3u')
     src = directory+'/tvshows'
@@ -44,8 +46,7 @@ elif funct == 'latesttv':
     cleanup = shutil.rmtree('tvshows/')
 elif funct == 'movies':
     urltype = 'movies'
-    ipttvurl = 'https://tvnow.best/api/list/' + user + '/' + pw + '/m3u8/'+ urltype
-    print(wget.download(ipttvurl, ('m3u/iptvmovies.m3u')))
+    print(wget.download(providerUrl+urltype, ('m3u/iptvmovies.m3u')))
     apollolist = streamClasses.rawStreamList('m3u/iptvmovies.m3u')
     os.remove('m3u/iptvmovies.m3u')
     src = directory+'/movies'
