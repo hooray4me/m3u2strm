@@ -22,7 +22,7 @@ crontab -e
 You can run this manually:
   
 cd /m3u2strm
-<em>Python Script Provider User Password Type Path</em>
+<em>Python Script Provider User Password Type Path</em><br/>
 $(which python3) m3u2strm.py apollo (apollo user) (apollo password) alltv "/path/to/tvshows/"
 
 $(which python3) m3u2strm.py apollo (apollo user) (apollo password) movies "/path/to/movies/"
