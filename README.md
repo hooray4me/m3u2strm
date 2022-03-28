@@ -4,9 +4,8 @@ m3u2strm is a set of python scripts that will consume the VOD (video on demand) 
 Pre-reqs:
 1. Make sure you have python3 installed.
 2. python3 -m ensurepip
-3. python3 -m pip install asyncio
-4. python3 -m pip install tools
-5. python3 -m pip install wget
+3. python3 -m pip install tools
+4. python3 -m pip install wget
 
 Installation and setup:
 1. Clone this repo (requires git to be installed). We clone to the root.
@@ -16,16 +15,16 @@ git clone https://github.com/hooray4me/m3u2strm.git
 
 crontab -e
 
-0 10 * * * cd /m3u2strm && $(which python3) m3u2strm.py (apollo user) (apollo password) alltv "/path/to/tvshows/" >> ~/cron.log 2>&1
+0 10 * * * cd /m3u2strm && $(which python3) m3u2strm.py apollo (apollo user) (apollo password) alltv "/path/to/tvshows/" >> ~/cron.log 2>&1
 
-0 20 * * * cd /m3u2strm && $(which python3) m3u2strm.py (apollo user) (apollo password) movies "/path/to/movies/" >> ~/cron.log 2>&1
+0 20 * * * cd /m3u2strm && $(which python3) m3u2strm.py apollo (apollo user) (apollo password) movies "/path/to/movies/" >> ~/cron.log 2>&1
   
 You can run this manually:
   
 cd /m3u2strm
+<em>Python Script Provider User Password Type Path</em>
+$(which python3) m3u2strm.py apollo (apollo user) (apollo password) alltv "/path/to/tvshows/"
 
-$(which python3) m3u2strm.py (apollo user) (apollo password) alltv "/path/to/tvshows/"
-
-$(which python3) m3u2strm.py (apollo user) (apollo password) movies "/path/to/movies/"
+$(which python3) m3u2strm.py apollo (apollo user) (apollo password) movies "/path/to/movies/"
 
 In emby, create a tvshows and movies library that points to these paths.
