@@ -248,8 +248,6 @@ def compare_and_update(dcmp):
         elif os.path.isfile(dcmp.left+"/"+name):
             print("NEW STREAM FILE - %s - CREATING" % (name))
             shutil.copy2(dcmp.left+"/"+name, dcmp.right+"/"+name)
-    for name in dcmp.right_only:
-        print("NOTICE: %s DOES NOT EXIST FROM SOURCE" % (dcmp.right+"/"+name))
     for sub_dcmp in dcmp.subdirs.values():
         compare_and_update(sub_dcmp)
  
