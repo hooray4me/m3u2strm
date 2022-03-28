@@ -1,4 +1,3 @@
-import asyncio
 import logger
 import os
 import re
