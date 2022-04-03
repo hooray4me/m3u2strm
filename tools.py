@@ -1,6 +1,7 @@
 import re
 import os
 import shutil
+from subprocess import Popen, PIPE, STDOUT
 def verifyURL(line):
   verifyurl  = re.compile('://').search(line)
   if verifyurl:
@@ -269,3 +270,9 @@ def compare_and_remoteupdate(dcmp,remotepath):
             shutil.copy2(dcmp.left+"/"+name, remotepath+name)
     for sub_dcmp in dcmp.subdirs.values():
         compare_and_remoteupdate(sub_dcmp,remotepath)
+
+def mounter(remotepath,localmount,credloc):
+  process = Popen("mount -t cifs "+remotepath+" "+localmount+" -o credentials="+credloc+",noexec", shell=True, stdout=PIPE, stderr=PIPE)
+
+def dismounter(localmount):
+  close = Popen("umount "+localmount+"", shell=True, stdout=PIPE, stderr=PIPE)
