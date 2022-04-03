@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""$(which python3) m3u2strm.py apollo user pass alltv '/streaming/movies/'"""
 import tools
 import streamClasses
 import wget
