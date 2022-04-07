@@ -251,28 +251,3 @@ def compare_and_update(dcmp):
             shutil.copy2(dcmp.left+"/"+name, dcmp.right+"/"+name)
     for sub_dcmp in dcmp.subdirs.values():
         compare_and_update(sub_dcmp)
-
-def compare_and_remoteupdate(dcmp,remotepath):
-    for name in dcmp.diff_files:
-        print("REMOTE STREAM CHANGE -  %s - UPDATING" % (name))
-        if os.path.isdir(dcmp.left+"/"+name):
-            print("REMOTE STREAM CHANGE isdir -  %s - UPDATING" % (name))
-            shutil.copytree(dcmp.left+"/"+name, remotepath+name, dirs_exist_ok=True)
-        elif os.path.isfile(dcmp.left+"/"+name):
-            print("REMOTE STREAM CHANGE isfile -  %s - UPDATING" % (name))
-            shutil.copy2(dcmp.left+"/"+name, remotepath+name)
-    for name in dcmp.left_only:
-        if os.path.isdir(dcmp.left+"/"+name):
-            print("REMOTE NEW STREAM DIRECTORY - %s - CREATING" % (remotepath+name))
-            shutil.copytree(dcmp.left+"/"+name, remotepath+name, dirs_exist_ok=True)
-        elif os.path.isfile(dcmp.left+"/"+name):
-            print("REMOTE NEW STREAM FILE - %s - CREATING" % (name))
-            shutil.copy2(dcmp.left+"/"+name, remotepath+name)
-    for sub_dcmp in dcmp.subdirs.values():
-        compare_and_remoteupdate(sub_dcmp,remotepath)
-
-def mounter(remotepath,localmount,credloc):
-  process = Popen("mount -t cifs "+remotepath+" "+localmount+" -o credentials="+credloc+",noexec", shell=True, stdout=PIPE, stderr=PIPE)
-
-def dismounter(localmount):
-  close = Popen("umount "+localmount+"", shell=True, stdout=PIPE, stderr=PIPE)
