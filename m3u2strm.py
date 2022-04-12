@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""$(which python3) m3u2strm.py apollo user pass alltv '/streaming/tv/' remoteSharePath localmount credentialFile"""
+"""$(which python3) m3u2strm.py apollo user pass alltv '/streaming/tv/' remoteSharePath localmount credentialFilebbbbbbbbbbbbbbbbbb"""
 import tools
 import streamClasses
 import wget
@@ -21,7 +21,9 @@ providerUrl = ''
 directory =  os.path.abspath(os.path.dirname(__file__))
 if provider == 'apollo':
     providerUrl = 'https://tvnow.best/api/list/'+ user + '/' + pw + '/m3u8/'
-if os.system("sudo mount -t cifs -o credentials="+cred+" "+share+" "+localmount) == 0:
+if not os.path.ismount(localmount):
+    os.system("sudo mount -t cifs -o credentials="+cred+" "+share+" "+localmount)
+if os.path.ismount(localmount):
     print('...Starting Download...')
     if funct == 'alltv':
         urltype = 'tvshows'
