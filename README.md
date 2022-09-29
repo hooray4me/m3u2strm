@@ -20,9 +20,9 @@ m3u2strm is a set of python scripts that will consume the VOD (video on demand) 
 
 `crontab -e`
 ```
-0 10 * * * cd /m3u2strm && $(which python3) m3u2strm.py apollo (apollo user) (apollo password) alltv "/path/to/tvshows/" >> ~/cron.log 2>&1
+10 0 * * * cd /m3u2strm && $(which python3) m3u2strm.py apollo (apollo user) (apollo password) alltv "/path/to/tvshows/" >> ~/cron.log 2>&1
 
-0 20 * * * cd /m3u2strm && $(which python3) m3u2strm.py apollo (apollo user) (apollo password) movies "/path/to/movies/" >> ~/cron.log 2>&1
+20 0 * * * cd /m3u2strm && $(which python3) m3u2strm.py apollo (apollo user) (apollo password) movies "/path/to/movies/" >> ~/cron.log 2>&1
   ```
 You can run this manually:
   
