@@ -73,7 +73,7 @@ class Event(object):
       self.year = "A"
     if self.resolution:
       filestring.append(self.resolution)
-    return ('events/'+ self.eventtype + self.title.replace(':','-').replace('*','_').replace('/','_').replace('?','') + ' - ' + self.year + "/" + ' - '.join(filestring) + ".strm")
+    return ('events/'+ self.eventtype + "/" + ' - '.join(filestring) + ".strm")
   
   def makeStream(self):
     filename = self.getFilename()
