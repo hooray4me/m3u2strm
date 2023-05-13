@@ -12,7 +12,13 @@ def tvgTypeMatch(line):
   if typematch:
     return typematch
   return
-  
+
+def eventMatch(line):
+  eventmatch = re.compile('tvg-type=\"events\"', re.IGNORECASE).search(line)
+  if eventmatch:
+    return eventmatch
+  return
+
 def ufcwweMatch(line):
   ufcwwematch = re.compile('[U][f][c]|[w][w][e]|[r][i][d][i][c][u][l]', re.IGNORECASE).search(line)
   if ufcwwematch:

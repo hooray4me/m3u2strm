@@ -169,6 +169,9 @@ class rawStreamList(object):
   def parseStreamType(self, streaminfo):
     typematch = tools.tvgTypeMatch(streaminfo)
     ufcwwematch = tools.ufcwweMatch(streaminfo)
+    eventmatch = tools.eventMatch(streaminfo)
+    if eventmatch:
+      return 'live'
     if ufcwwematch:
       return 'live'
     if typematch:
