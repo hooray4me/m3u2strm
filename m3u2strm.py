@@ -20,7 +20,7 @@ if provider == 'apollo':
 print('...Starting Download...')
 if funct == 'alltv':
     urltype = 'tvshows'
-    for i in range(1,24):
+    for i in range(1,27):
         url = providerUrl + urltype +'/' + str(i)
         print(wget.download(url, ('m3u/apollotvshows-'+str(i)+'.m3u')))
         apollolist = streamClasses.rawStreamList('m3u/apollotvshows-'+str(i)+'.m3u')
