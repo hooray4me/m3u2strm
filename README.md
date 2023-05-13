@@ -1,5 +1,5 @@
 ## m3u2strm
-m3u2strm is a set of python scripts that will consume the VOD (video on demand) tv shows and movies from an apollogroup.tv subscription and make it into libraries useable by emby. We use **Ubuntu Focal** and these instructions are for this OS.
+m3u2strm is a set of python scripts that will consume the VOD (video on demand) tv shows, movies and events from an apollogroup.tv subscription and make it into libraries useable by emby. We use **Ubuntu Focal** and these instructions are for this OS.
 
 **Pre-reqs:**
 1. Make sure you have python3 installed.
@@ -23,6 +23,8 @@ m3u2strm is a set of python scripts that will consume the VOD (video on demand) 
 10 0 * * * cd /m3u2strm && $(which python3) m3u2strm.py apollo (apollo user) (apollo password) alltv "/path/to/tvshows/" >> ~/cron.log 2>&1
 
 20 0 * * * cd /m3u2strm && $(which python3) m3u2strm.py apollo (apollo user) (apollo password) movies "/path/to/movies/" >> ~/cron.log 2>&1
+
+30 0 * * * cd /m3u2strm && $(which python3) m3u2strm.py apollo (apollo user) (apollo password) events "/path/to/events/" >> ~/cron.log 2>&1
   ```
 You can run this manually:
   
@@ -36,6 +38,9 @@ You can run this manually:
 
 `$(which python3) m3u2strm.py apollo user@email.com password movies "/path/to/movies/"`
 
+**Events**
+
+`$(which python3) m3u2strm.py apollo user@email.com password events "/path/to/events/"`
+
 In emby, create a tvshows and movies library that points to these paths.
 
-This is a fork from [silence48](https://github.com/silence48/m3u2strm).
