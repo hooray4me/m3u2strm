@@ -63,14 +63,6 @@ class Event(object):
 
   def getFilename(self):
     filestring = [self.title.replace(':','-').replace('*','_').replace('/','_').replace('?','')]
-    if self.year:
-      if self.year[0] == "(":
-        filestring.append(self.year)
-      else:
-        self.year = "(" + self.year + ")"
-        filestring.append(self.year)
-    else:
-      self.year = "A"
     if self.resolution:
       filestring.append(self.resolution)
     return ('events/'+ self.eventtype + "/" + ' - '.join(filestring) + ".strm")
