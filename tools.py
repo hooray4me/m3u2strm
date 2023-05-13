@@ -163,6 +163,10 @@ def parseResolution(match):
     return '480p'
   return
 
+def parseGroup(match):
+  groupmatch = match.group().strip()
+  return groupmatch
+
 def makeStrm(filename, url):
   if not os.path.exists(filename):
     streamfile = open(filename, "w+")

@@ -51,7 +51,42 @@ class Movie(object):
     if not os.path.exists(moviedir):
       os.mkdir(moviedir)
     tools.makeStrm(filename, self.url)
+
+class Event(object):
+  def __init__(self, title, url, eventtype, year=None, resolution=None, language=None):
+    self.title = title.strip()
+    self.url = url
+    self.eventtype = eventtype
+    self.year = year
+    self.resolution = resolution
+    self.language = language
+
+  def getFilename(self):
+    filestring = [self.title.replace(':','-').replace('*','_').replace('/','_').replace('?','')]
+    if self.year:
+      if self.year[0] == "(":
+        filestring.append(self.year)
+      else:
+        self.year = "(" + self.year + ")"
+        filestring.append(self.year)
+    else:
+      self.year = "A"
+    if self.resolution:
+      filestring.append(self.resolution)
+    return ('events/'+ self.eventtype + self.title.replace(':','-').replace('*','_').replace('/','_').replace('?','') + ' - ' + self.year + "/" + ' - '.join(filestring) + ".strm")
   
+  def makeStream(self):
+    filename = self.getFilename()
+    directories = filename.split('/')
+    directories = directories[:-1]
+    typedir = directories[0]
+    moviedir = '/'.join([typedir, directories[1]])
+    if not os.path.exists(typedir):
+      os.mkdir(typedir)
+    if not os.path.exists(moviedir):
+      os.mkdir(moviedir)
+    tools.makeStrm(filename, self.url)
+
 class TVEpisode(object):
   '''A class used to construct the TV filename.
 
@@ -245,7 +280,25 @@ class rawStreamList(object):
   
   def parseLiveStream(self, streaminfo, streamURL):
     #print(streaminfo, "LIVETV")
-    pass
+    title = tools.parseMovieInfo(streaminfo)
+    resolution = tools.resolutionMatch(streaminfo)
+    eventtype = tools.tvgGroupMatch(streaminfo)
+    if eventtype:
+      eventtype = tools.parseGroup(eventtype)
+    if resolution:
+      resolution = tools.parseResolution(resolution)
+    year = tools.yearMatch(streaminfo)
+    if year:
+      title = tools.stripYear(title)
+      year = year.group().strip()
+    language = tools.languageMatch(title)
+    if language:
+      title = tools.stripLanguage(title)
+      language = language.group().strip()
+    eventstream = Event(title, streamURL,eventtype=eventtype, year=year, resolution=resolution, language=language)
+    print(eventstream.__dict__, "EVENT")
+    print(eventstream.getFilename())
+    eventstream.makeStream()
 
   def parseVodMovie(self, streaminfo, streamURL):
     #todo: add language parsing for |LA| and strip it
