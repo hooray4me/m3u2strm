@@ -164,8 +164,8 @@ def parseResolution(match):
   return
 
 def parseGroup(match):
-  groupmatch = match.group().strip()
-  return groupmatch
+  groupmatch = re.findall(r'"([^"]*)"', match)
+  return groupmatch[0]
 
 def makeStrm(filename, url):
   if not os.path.exists(filename):
