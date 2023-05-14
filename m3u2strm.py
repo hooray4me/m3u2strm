@@ -39,7 +39,7 @@ elif funct == 'events':
         os.remove('m3u/apolloevents-'+str(i)+'.m3u')
     print('comparing destination ',path)
     c = filecmp.dircmp(directory+'/events', path)
-    tools.compare_and_update(c)
+    tools.compare_and_update_events(c)
     print('cleaning up temp space')
     cleanup = shutil.rmtree('events/')
 elif funct == 'latesttv':
