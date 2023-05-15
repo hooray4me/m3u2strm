@@ -3,17 +3,6 @@ import os
 import re
 import tools
 class Movie(object):
-  '''A class used to construct the Movie filename.
-
-  :param title: The Title of the Movie (required)
-  :type title: str.
-  :param url: The url to the location of the stream (required)
-  :type url: str.
-  :param year: The Year the movie was made (optional)
-  :type year: str.
-  :param resolution: The resolution of the stream (optional)
-  :type resolution: str.
-  '''
   def __init__(self, title, url, year=None, resolution=None, language=None):
     self.title = title.strip()
     self.url = url
@@ -22,11 +11,6 @@ class Movie(object):
     self.language = language
 
   def getFilename(self):
-    '''Getter to get the filename for the stream file
-    
-    :returns: the fully constructed filename with type directory ea. "movies/The Longest Yard - 720p.strm"
-    :rtype: str
-    '''
     filestring = [self.title.replace(':','-').replace('*','_').replace('/','_').replace('?','').replace(',','')]
     if self.year:
       if self.year[0] == "(":
