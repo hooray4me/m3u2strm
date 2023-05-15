@@ -245,6 +245,7 @@ def parseEpisode(title):
       episodenumber = episodeMatch(title)
       showtitle = stripSxxExx(title)
     return [showtitle, episodetitle, seasonnumber, episodenumber, language]
+
 def compare_and_update(dcmp):
     for name in dcmp.diff_files:
         print("STREAM CHANGE -  %s - UPDATING" % (name))
@@ -259,8 +260,16 @@ def compare_and_update(dcmp):
         elif os.path.isfile(dcmp.left+"/"+name):
             print("NEW STREAM FILE - %s - CREATING" % (name))
             shutil.copy2(dcmp.left+"/"+name, dcmp.right+"/"+name)
+    for name in dcmp.right_only:
+        if os.path.isfile(dcmp.right+"/"+name):
+            print("NO LONGER EXISTS - %s - DELETING" % (name))
+            os.remove(dcmp.right+"/"+name)
+        elif os.path.isdir(dcmp.right+"/"+name):
+            print("NO LONGER EXISTS - %s - DELETING" % (name))
+            shutil.rmtree(dcmp.right+"/"+name)
     for sub_dcmp in dcmp.subdirs.values():
         compare_and_update(sub_dcmp)
+
 def compare_and_update_events(dcmp):
     for name in dcmp.diff_files:
         print("STREAM CHANGE -  %s - UPDATING" % (name))
