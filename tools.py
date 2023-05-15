@@ -262,10 +262,11 @@ def compare_and_update(dcmp):
             shutil.copy2(dcmp.left+"/"+name, dcmp.right+"/"+name)
     for name in dcmp.right_only:
         if os.path.isdir(dcmp.right+"/"+name):
-          print(dcmp.right+"/"+name)
+          print("directory:"+dcmp.right+name)
         #     print("directory NO LONGER EXISTS - %s - DELETING" % (name))
         #     shutil.rmtree(dcmp.right+"/"+name)
-        # if os.path.isfile(dcmp.right+"/"+name) and name.endswith(".strm"):
+        if os.path.isfile(dcmp.right+"/"+name) and name.endswith(".strm"):
+          print("file:"+dcmp.right+name)
         #     print("file NO LONGER EXISTS - %s - DELETING" % (name))
         #     os.remove(dcmp.right+"/"+name)
     for sub_dcmp in dcmp.subdirs.values():
