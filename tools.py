@@ -261,7 +261,7 @@ def compare_and_update(dcmp):
             print("NEW STREAM FILE - %s - CREATING" % (name))
             shutil.copy2(dcmp.left+"/"+name, dcmp.right+"/"+name)
     for name in dcmp.right_only:
-        if os.path.isfile(dcmp.right+"/"+name):
+        if os.path.isfile(dcmp.right+"/"+name) and name.endswith(".strm"):
             print("NO LONGER EXISTS - %s - DELETING" % (name))
             os.remove(dcmp.right+"/"+name)
         elif os.path.isdir(dcmp.right+"/"+name):
