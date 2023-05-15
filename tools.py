@@ -290,8 +290,8 @@ def compare_and_update_movies(dcmp):
         if os.path.isdir(dcmp.right+"/"+name):
           print("Movies NO LONGER EXISTS - %s - DELETING" % (name))
           shutil.rmtree(dcmp.right+name)
-    for sub_dcmp in dcmp.subdirs.values():
-        compare_and_update_movies(sub_dcmp)
+    # for sub_dcmp in dcmp.subdirs.values():
+    #     compare_and_update_movies(sub_dcmp)
 
 def compare_and_update_events(dcmp):
     for name in dcmp.diff_files:
@@ -311,5 +311,5 @@ def compare_and_update_events(dcmp):
         if os.path.isfile(dcmp.right+"/"+name):
             print("EVENT NO LONGER EXISTS - %s - DELETING" % (name))
             os.remove(dcmp.right+"/"+name)
-    # for sub_dcmp in dcmp.subdirs.values():
-    #     compare_and_update_events(sub_dcmp) 
+    for sub_dcmp in dcmp.subdirs.values():
+        compare_and_update_events(sub_dcmp) 
