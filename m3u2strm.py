@@ -59,7 +59,7 @@ elif funct == 'movies':
     os.remove('m3u/iptvmovies.m3u')
     print('comparing destination ',path)
     c = filecmp.dircmp(directory+'/movies', path)
-    tools.compare_and_update(c)
+    tools.compare_and_update_movies(c)
     print('cleaning up temp space')
     cleanup = shutil.rmtree('movies/')
 print('done')
