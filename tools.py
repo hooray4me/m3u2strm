@@ -283,7 +283,7 @@ def compare_and_update_events(dcmp):
             shutil.copytree(dcmp.left+"/"+name, dcmp.right+"/"+name, dirs_exist_ok=True)
         elif os.path.isfile(dcmp.left+"/"+name):
             print("NEW STREAM FILE - %s - CREATING" % (name))
-            shutil.copy2(dcmp.left+"/"+name, dcmp.right+"/"+name)
+            shutil.copy2(dcmp.left+"/"+name, dcmp.right+"/"+name, ignore_errors = True)
     for name in dcmp.right_only:
         if os.path.isfile(dcmp.right+"/"+name):
             print("EVENT NO LONGER EXISTS - %s - DELETING" % (name))
