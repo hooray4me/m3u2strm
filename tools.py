@@ -293,7 +293,7 @@ def compare_and_update_movies(dcmp):
           for f in directory_list:
             src = f
             dst = f.replace(',','')
-            os.rename(path+src, path+dst)
+            os.rename(path+"/"+src, path+"/"+dst)
           # print("Movies NO LONGER EXISTS - %s - DELETING" % (name))
           # shutil.rmtree(str(os.path.join(dcmp.right,name)))
     # for sub_dcmp in dcmp.subdirs.values():
