@@ -291,7 +291,7 @@ def compare_and_update_movies(dcmp):
           #print("Movies NO LONGER EXISTS - %s - DELETING" % (name))
           print(name)
           # print("Movies NO LONGER EXISTS - %s - DELETING" % (name))
-          # shutil.rmtree(str(os.path.join(dcmp.right,name)))
+          shutil.rmtree(os.path.join(dcmp.right,name))
     # for sub_dcmp in dcmp.subdirs.values():
     #     compare_and_update_movies(sub_dcmp)
 
