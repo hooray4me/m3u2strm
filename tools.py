@@ -1,5 +1,6 @@
 import re
 import os
+import pathlib
 import shutil
 def verifyURL(line):
   verifyurl  = re.compile('://').search(line)
@@ -288,10 +289,9 @@ def compare_and_update_movies(dcmp):
             shutil.copy2(dcmp.left+"/"+name, dcmp.right+"/"+name)
     for name in dcmp.right_only:
         if os.path.isdir(str(os.path.join(dcmp.right,name))):
-          path = os.path.join(dcmp.right,name)
-          for filename in os.listdir(path):
-            print(filename)
-            os.rename(path+filename, path+filename.replace(',','').replace('(','').replace(')',''))
+          print("Movies NO LONGER EXISTS - %s - DELETING" % (name))
+          path = pathlib.Path(os.path.join(dcmp.right,name))
+          shutil.rmtree(path)
           # print("Movies NO LONGER EXISTS - %s - DELETING" % (name))
           # shutil.rmtree(str(os.path.join(dcmp.right,name)))
     # for sub_dcmp in dcmp.subdirs.values():
