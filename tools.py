@@ -265,7 +265,7 @@ def compare_and_update(dcmp):
           print("directory:"+dcmp.right+name)
         #     print("directory NO LONGER EXISTS - %s - DELETING" % (name))
         #     shutil.rmtree(dcmp.right+"/"+name)
-        if os.path.isfile(dcmp.right+"/"+name) and name.endswith(".strm"):
+        if os.path.isfile(dcmp.right+"/"+name):
           print("file:"+dcmp.right+name)
         #     print("file NO LONGER EXISTS - %s - DELETING" % (name))
         #     os.remove(dcmp.right+"/"+name)
