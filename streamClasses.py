@@ -27,7 +27,7 @@ class Movie(object):
     :returns: the fully constructed filename with type directory ea. "movies/The Longest Yard - 720p.strm"
     :rtype: str
     '''
-    filestring = [self.title.replace(':','-').replace('*','_').replace('/','_').replace('?','')]
+    filestring = [self.title.replace(':','-').replace('*','_').replace('/','_').replace('?','').replace(',','')]
     if self.year:
       if self.year[0] == "(":
         filestring.append(self.year)
@@ -38,7 +38,7 @@ class Movie(object):
       self.year = "A"
     if self.resolution:
       filestring.append(self.resolution)
-    return ('movies/' + self.title.replace(':','-').replace('*','_').replace('/','_').replace('?','') + ' - ' + self.year + "/" + ' - '.join(filestring) + ".strm")
+    return ('movies/' + self.title.replace(':','-').replace('*','_').replace('/','_').replace('?','').replace(',','') + ' - ' + self.year + "/" + ' - '.join(filestring) + ".strm")
   
   def makeStream(self):
     filename = self.getFilename()
@@ -62,7 +62,7 @@ class Event(object):
     self.language = language
 
   def getFilename(self):
-    filestring = [self.title.replace(':','-').replace('*','_').replace('/','_').replace('?','')]
+    filestring = [self.title.replace(':','-').replace('*','_').replace('/','_').replace('?','').replace(',','')]
     if self.resolution:
       filestring.append(self.resolution)
     return ('events/'+ self.eventtype + "/" + ' - '.join(filestring) + ".strm")
@@ -129,9 +129,9 @@ class TVEpisode(object):
     if self.resolution:
       filestring.append(self.resolution.strip())
     if self.seasonnumber:
-      return ('tvshows/' + self.showtitle.strip().replace(':','-').replace('/','_').replace('*','_').replace('?','') + "/" + self.showtitle.strip().replace(':','-').replace('/','-').replace('*','_').replace('?','') + " - Season " + str(self.seasonnumber.strip()) + '/' + ' - '.join(filestring).replace(':','-').replace('*','_') + ".strm")
+      return ('tvshows/' + self.showtitle.strip().replace(':','-').replace('/','_').replace('*','_').replace('?','').replace(',','') + "/" + self.showtitle.strip().replace(':','-').replace('/','-').replace('*','_').replace('?','') + " - Season " + str(self.seasonnumber.strip()) + '/' + ' - '.join(filestring).replace(':','-').replace('*','_') + ".strm")
     else:
-      return ('tvshows/' + self.showtitle.strip().replace(':','-').replace('/','_').replace('*','_').replace('?','') +"/" +' - '.join(filestring).replace(':','-').replace('*','_') + ".strm")
+      return ('tvshows/' + self.showtitle.strip().replace(':','-').replace('/','_').replace('*','_').replace('?','').replace(',','') +"/" +' - '.join(filestring).replace(':','-').replace('*','_') + ".strm")
   
   def makeStream(self):
     filename = self.getFilename()
