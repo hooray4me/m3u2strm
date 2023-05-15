@@ -311,5 +311,5 @@ def compare_and_update_events(dcmp):
         if os.path.isfile(dcmp.right+"/"+name):
             print("EVENT NO LONGER EXISTS - %s - DELETING" % (name))
             os.remove(dcmp.right+"/"+name)
-    for sub_dcmp in dcmp.subdirs.values():
-        compare_and_update_events(sub_dcmp) 
+    # for sub_dcmp in dcmp.subdirs.values():
+    #     compare_and_update_events(sub_dcmp) 
