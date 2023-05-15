@@ -7,6 +7,13 @@ def verifyURL(line):
   if verifyurl:
     return True
   return
+def rmtree(f: pathlib.Path):
+    if f.is_file():
+        f.unlink()
+    else:
+        for child in f.iterdir():
+            rmtree(child)
+        f.rmdir()
 
 def tvgTypeMatch(line):
   typematch = re.compile('tvg-type=\"(.*?)\"', re.IGNORECASE).search(line)
@@ -290,11 +297,8 @@ def compare_and_update_movies(dcmp):
     for name in dcmp.right_only:
         if os.path.isdir(str(os.path.join(dcmp.right,name))):
           print("Movies NO LONGER EXISTS - %s - DELETING" % (name))
-          path = pathlib.Path(os.path.join(dcmp.right,name))
-          for child in path.iterdir():
-            if child.is_file():
-              child.unlink()
-          path.rmdir()
+          path = os.path.join(dcmp.right,name)
+          rmtree(path)
           # print("Movies NO LONGER EXISTS - %s - DELETING" % (name))
           # shutil.rmtree(str(os.path.join(dcmp.right,name)))
     # for sub_dcmp in dcmp.subdirs.values():
