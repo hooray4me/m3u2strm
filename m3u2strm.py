@@ -17,7 +17,7 @@ providerUrl = ''
 directory =  os.path.abspath(os.path.dirname(__file__))
 if provider == 'apollo':
     providerUrl = 'https://tvnow.best/api/list/'+ user + '/' + pw + '/m3u8/'
-print('...Starting Download...')
+print('...Starting Download....')
 if funct == 'alltv':
     urltype = 'tvshows'
     for i in range(1,27):
